@@ -1,7 +1,7 @@
 # ==========================================
 # LIBRARY CATALOGUE
 # ==========================================
-
+print("test")
 catalogue = {
     "book_001": {"title": "1984", "author": "George Orwell", "copies": 3},
     "book_002": {"title": "The Hobbit", "author": "J.R.R. Tolkien", "copies": 2},
