@@ -10,6 +10,7 @@ import json
 import os
 import returnbookfunc
 import borrowbookfunc
+import viewmemfunc
 
 # --- SAMPLE CATALOGUE (from Week 1 or simplified version) ---
 
@@ -120,13 +121,7 @@ def return_book():
 # ============================================================
 
 def view_member_details():
-    print("\n--- View Member Details ---")
-
-    # TODO: ask for member name
-
-    # TODO: print details
-
-    print("TODO: implement view_member_details()")
+    viewmemfunc.view_member_details()
 
 
 # ============================================================
