@@ -9,6 +9,7 @@ Now includes:
 import json
 import os
 import task3
+import task2
 
 # --- SAMPLE CATALOGUE (from Week 1 or simplified version) ---
 
@@ -65,7 +66,6 @@ def register_member():
     print("\n--- Register New Member ---")
 
     # TODO: ask for the member's name
-    # name = input("Enter member name: ").strip()
 
     # TODO: validate name is not empty and not already in members
 
@@ -105,7 +105,7 @@ def borrow_allowed(member_profile):
 
 def borrow_book():
     print("\n--- Borrow a Book ---")
-
+    task2.borrow_book()
     # TODO: ask for member name and validate
 
     # TODO: ask for book ID

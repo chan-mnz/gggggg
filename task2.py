@@ -1,3 +1,38 @@
+
+import json
+import os
+import task3
+
+# --- SAMPLE CATALOGUE (from Week 1 or simplified version) ---
+
+catalogue = {
+    "book_001": {"title": "1984", "author": "George Orwell", "copies": 3},
+    "book_002": {"title": "The Hobbit", "author": "J.R.R. Tolkien", "copies": 2},
+    "book_003": {"title": "Python Basics", "author": "A. Smith", "copies": 5},
+}
+
+# This will be loaded from a JSON file when the program starts.
+members = {}
+
+MEMBERS_FILE = "members.json"
+
+def save_members():
+    """
+    Saves the current members dictionary to members.json
+    """
+    with open(MEMBERS_FILE, "w") as f:
+        json.dump(members, f, indent=4)
+    print("Member data saved.")
+
+def is_book_available(book_id):
+    if book_id in catalogue and catalogue[book_id]["copies"] > 0:
+        return True
+    return False
+
+
+def borrow_allowed(member_profile):
+    return len(member_profile["borrowed"]) < 3
+
 def borrow_book():
     print("\n--- Borrow a Book ---")
 
