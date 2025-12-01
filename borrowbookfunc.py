@@ -11,11 +11,10 @@ catalogue = {
 }
 
 # This will be loaded from a JSON file when the program starts.
-members = {}
 
 MEMBERS_FILE = "members.json"
 
-def save_members():
+def save_members(members):
     """
     Saves the current members dictionary to members.json
     """
@@ -32,9 +31,8 @@ def is_book_available(book_id):
 def borrow_allowed(member_profile):
     return len(member_profile["borrowed"]) < 3
 
-def borrow_book():
+def borrow_book(members):
     print("\n--- Borrow a Book ---")
-
     # Ask for member name and validate
     member_name = input("Enter member name: ").strip()
     if member_name not in members:
@@ -70,4 +68,4 @@ def borrow_book():
     print(f"You have successfully borrowed '{catalogue[book_id]['title']}'.")
 
     # Save updates
-    save_members()
+    save_members(members)

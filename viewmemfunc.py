@@ -8,13 +8,10 @@ catalogue = {
     "book_003": {"title": "Python Basics", "author": "A. Smith", "copies": 5},
 }
 
-# This will be loaded from a JSON file when the program starts.
-members = {}
-
 MEMBERS_FILE = "members.json"
 
 
-def view_member_details():
+def view_member_details(members):
     print("\n--- View Member Details ---")
 
     name = input("Enter member name: ").strip()

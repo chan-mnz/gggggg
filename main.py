@@ -11,6 +11,7 @@ import os
 import returnbookfunc
 import borrowbookfunc
 import viewmemfunc
+import registerfunc
 
 # --- SAMPLE CATALOGUE (from Week 1 or simplified version) ---
 
@@ -35,7 +36,7 @@ def load_members():
     Loads member data from members.json if it exists.
     """
     global members
-
+    print("entered function load_members")
     if not os.path.exists(MEMBERS_FILE):
         print("No member file found. Starting with empty records.")
         members = {}
@@ -58,34 +59,6 @@ def save_members():
         json.dump(members, f, indent=4)
     print("Member data saved.")
 
-
-# ============================================================
-# TASK 1 – REGISTER A USER (INPUT + VALIDATION)
-# ============================================================
-
-def register_member():
-    print("\n--- Register New Member ---")
-
-    # TODO: ask for the member's name
-
-    # TODO: validate name is not empty and not already in members
-
-    # TODO: ask for age and validate
-
-    # TODO: ask for membership type
-
-    # TODO: build profile dictionary
-
-    # TODO: add to global members
-    # members[name] = profile
-
-    # TODO: save immediately
-    # save_members()
-
-    print("TODO: implement register_member()")
-    return None
-
-
 # ============================================================
 # SUPPORT FUNCTIONS FOR BORROW FLOW
 # ============================================================
@@ -100,34 +73,6 @@ def borrow_allowed(member_profile):
     return len(member_profile["borrowed"]) < 3
 
 
-# ============================================================
-# TASK 2 – BORROW BOOK FLOW
-# ============================================================
-
-def borrow_book():
-    borrowbookfunc.borrow_book()
-
-
-# ============================================================
-# RETURN BOOK FLOW
-# ============================================================
-
-def return_book():
-    returnbookfunc.return_book()
-
-
-# ============================================================
-# VIEW MEMBER DETAILS
-# ============================================================
-
-def view_member_details():
-    viewmemfunc.view_member_details()
-
-
-# ============================================================
-# MAIN MENU LOOP
-# ============================================================
-
 def main_menu():
     while True:
         print("\n=== Library System Menu ===")
@@ -140,13 +85,13 @@ def main_menu():
         choice = input("Enter your choice (1-5): ").strip()
 
         if choice == "1":
-            register_member()
+            registerfunc.register_member(members)
         elif choice == "2":
-            borrow_book()
+            borrowbookfunc.borrow_book(members)
         elif choice == "3":
-            return_book()
+            returnbookfunc.return_book(members)
         elif choice == "4":
-            view_member_details()
+            viewmemfunc.view_member_details(members)
         elif choice == "5":
             print("Goodbye!")
             break

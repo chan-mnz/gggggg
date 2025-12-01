@@ -1,0 +1,12 @@
+{
+    "James": {
+        "age": 18,
+        "membership": "basic",
+        "borrowed": []
+    },
+    "Alice": {
+        "age": 25,
+        "membership": "premium",
+        "borrowed": []
+    }
+}

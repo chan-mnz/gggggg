@@ -11,8 +11,6 @@ catalogue = {
     "book_003": {"title": "Python Basics", "author": "A. Smith", "copies": 5},
 }
 
-# This will be loaded from a JSON file when the program starts.
-members = {}
 
 MEMBERS_FILE = "members.json"
 
@@ -21,27 +19,9 @@ MEMBERS_FILE = "members.json"
 # JSON SAVE/LOAD FUNCTIONS
 # ============================================================
 
-def load_members():
-    """
-    Loads member data from members.json if it exists.
-    """
-    global members
-
-    if not os.path.exists(MEMBERS_FILE):
-        print("No member file found. Starting with empty records.")
-        members = {}
-        return
-
-    try:
-        with open(MEMBERS_FILE, "r") as f:
-            members = json.load(f)
-        print(f"Loaded {len(members)} members from {MEMBERS_FILE}.")
-    except json.JSONDecodeError:
-        print("Error reading JSON file. Starting with empty records.")
-        members = {}
 
 
-def save_members():
+def save_members(members):
     """
     Saves the current members dictionary to members.json
     """
@@ -50,16 +30,16 @@ def save_members():
     print("Member data saved.")
 
 
-def return_book():
+def return_book(members):
     print("\n--- Return a Book ---")
 
-    # TODO: ask for member name
+    #ask for member name
     name = ""
     while (name not in members):
         name = input("Enter your name: ")
         if name not in members:
             print("Member not found. Try again.")
-    # TODO: show borrowed books
+    # show borrowed books
     borrowed_list = members[name]["borrowed"]
     if len(borrowed_list) == 0:
         print("You have no borrowed books.")
@@ -69,7 +49,7 @@ def return_book():
     for book_id in borrowed_list:
         book = catalogue[book_id]
         print(f"- {book_id}: {book['title']} ({book['author']})")
-    # TODO: ask which book they want to return
+    # ask which book they want to return
     return_id = ""
     while True:
         return_id = input("Enter the book ID you want to return: ").strip()
@@ -78,10 +58,9 @@ def return_book():
             print("You did not borrow that book. Try again.")
         else:
             break
-    # TODO: update catalogue and member record
+    #update catalogue and member record
     catalogue[return_id]["copies"] += 1
     members[name]["borrowed"].remove(return_id)
-    # TODO: save_members()
-    save_members()
-    return None
+    # save_members()
+    save_members(members)
 
