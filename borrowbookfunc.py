@@ -1,7 +1,6 @@
 
 import json
 import os
-import task3
 
 # --- SAMPLE CATALOGUE (from Week 1 or simplified version) ---
 

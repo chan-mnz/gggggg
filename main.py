@@ -8,8 +8,8 @@ Now includes:
 
 import json
 import os
-import task3
-import task2
+import returnbookfunc
+import borrowbookfunc
 
 # --- SAMPLE CATALOGUE (from Week 1 or simplified version) ---
 
@@ -104,20 +104,7 @@ def borrow_allowed(member_profile):
 # ============================================================
 
 def borrow_book():
-    print("\n--- Borrow a Book ---")
-    task2.borrow_book()
-    # TODO: ask for member name and validate
-
-    # TODO: ask for book ID
-
-    # TODO: update catalogue copies
-
-    # TODO: append book to member list
-
-    # TODO: save updates
-    # save_members()
-
-    print("TODO: implement borrow_book()")
+    borrowbookfunc.borrow_book()
 
 
 # ============================================================
@@ -125,19 +112,7 @@ def borrow_book():
 # ============================================================
 
 def return_book():
-    print("\n--- Return a Book ---")
-    task3.return_book()
-    # TODO: ask for member name
-
-    # TODO: show borrowed books
-
-    # TODO: ask which book they want to return
-
-    # TODO: update catalogue and member record
-
-    # TODO: save_members()
-
-    print("TODO: implement return_book()")
+    returnbookfunc.return_book()
 
 
 # ============================================================
